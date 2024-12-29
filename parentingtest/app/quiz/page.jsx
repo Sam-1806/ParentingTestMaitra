@@ -1,8 +1,9 @@
 "use client"
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 
-const quizQuestions = [
+import { useState } from "react";
+
+export default function ParentingStyleQuiz() {
+  const quizQuestions = [
     {
       question: "1. When your child refuses to follow your rules, what is your response?",
       options: {
@@ -230,241 +231,200 @@ const quizQuestions = [
     }
   ];
 
-  const scoringGuide = {
-    authoritative: { count: 0, description: "Authoritative Parenting", characteristics: [
+  const parentingStyles = {
+    Authoritative: {
+      description: "You provide clear guidelines with empathy.",
+      characteristics: [
         "High responsiveness and high expectations.",
         "Sets clear rules but is flexible and understanding.",
-        "Encourages independence but within boundaries."
-    ], impact: [
+        "Encourages independence but within boundaries.",
+      ],
+      impact: [
         "Leads to high self-esteem, better social skills, and academic success.",
-        "Promotes emotional regulation and decision-making skills."
-    ], tips: [
+        "Promotes emotional regulation and decision-making skills.",
+      ],
+      tips: [
         "Focus on building open communication with the child.",
         "Implement consistent rules and logical consequences.",
         "Offer praise for positive behavior and efforts.",
-        "Encourage the child to express opinions and discuss decisions."
-    ] },
-    authoritarian: { count: 0, description: "Authoritarian Parenting", characteristics: [
+        "Encourage the child to express opinions and discuss decisions.",
+      ],
+    },
+    Authoritarian: {
+      description: "You prioritize strict rules over flexibility.",
+      characteristics: [
         "High expectations, low responsiveness.",
         "Strict rules with little room for dialogue.",
-        "Uses punishment rather than discipline."
-    ], impact: [
+        "Uses punishment rather than discipline.",
+      ],
+      impact: [
         "Can lead to obedience but lower self-esteem.",
-        "May cause anxiety, rebellion, or social withdrawal."
-    ], tips: [
+        "May cause anxiety, rebellion, or social withdrawal.",
+      ],
+      tips: [
         "Emphasize the importance of empathy and listening.",
         "Encourage flexibility and consider the child’s feelings and thoughts.",
         "Shift from punishment to discipline—explaining the 'why' behind rules.",
-        "Promote warmth and show affection even while maintaining rules."
-    ] },
-    permissive: { count: 0, description: "Permissive Parenting", characteristics: [
+        "Promote warmth and show affection even while maintaining rules.",
+      ],
+    },
+    Permissive: {
+      description: "You allow too much freedom with few rules.",
+      characteristics: [
         "High responsiveness, low expectations.",
         "Indulgent, few rules, and rarely enforces discipline.",
-        "Acts more as a friend than a parent."
-    ], impact: [
+        "Acts more as a friend than a parent.",
+      ],
+      impact: [
         "May struggle with self-discipline and authority.",
-        "Can develop behavioral issues and lack of boundaries."
-    ], tips: [
+        "Can develop behavioral issues and lack of boundaries.",
+      ],
+      tips: [
         "Set clear, consistent boundaries and expectations.",
         "Practice saying 'no' and enforcing rules without feeling guilty.",
         "Encourage responsibility and accountability for actions.",
-        "Gradually introduce routines to promote structure and discipline."
-    ] },
-    uninvolved: { count: 0, description: "Uninvolved Parenting", characteristics: [
+        "Gradually introduce routines to promote structure and discipline.",
+      ],
+    },
+    Uninvolved: {
+      description: "You are detached and uninvolved in your child’s life.",
+      characteristics: [
         "Low responsiveness and low expectations.",
-        "Detached and uninvolved, offers minimal guidance or support."
-    ], impact: [
+        "Detached and uninvolved, offers minimal guidance or support.",
+      ],
+      impact: [
         "Can lead to attachment issues, low self-esteem, and poor academic and social outcomes.",
-        "May feel neglected and develop feelings of resentment."
-    ], tips: [
+        "May feel neglected and develop feelings of resentment.",
+      ],
+      tips: [
         "Encourage active involvement in the child’s life.",
         "Work on being emotionally available and responsive.",
         "Create a routine that includes regular time for bonding.",
-        "Set basic expectations and gradually increase involvement."
-    ] }
-};
+        "Set basic expectations and gradually increase involvement.",
+      ],
+    },
+  };
 
-export default function Quiz() {
-    const router = useRouter(); 
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [selectedAnswer, setSelectedAnswer] = useState(null);
-    const [quizCompleted, setQuizCompleted] = useState(false);
-    const [responses, setResponses] = useState([]); // Store responses for scoring
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null); // Track selected option
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const [resultStyle, setResultStyle] = useState(null);
 
-    const handleAnswerSelect = (answer) => {
-        setResponses(prev => [...prev, answer]); // Store selected answer
-        setSelectedAnswer(answer);
-  
-        setTimeout(() => {
-            const nextQuestion = currentQuestionIndex + 1;
-            if (nextQuestion < quizQuestions.length) {
-                setCurrentQuestionIndex(nextQuestion);
-                setSelectedAnswer(null);
-            } else {
-                setQuizCompleted(true);
-                scoreQuiz(); // Call scoring function
-            }
-        }, 1000);
-    };
-  
-    const scoreQuiz = () => {
-        // Count responses for each category
-        responses.forEach(response => {
-            switch (response) {
-                case 'A':
-                    scoringGuide.authoritative.count++;
-                    break;
-                case 'B':
-                    scoringGuide.authoritarian.count++;
-                    break;
-                case 'C':
-                    scoringGuide.permissive.count++;
-                    break;
-                case 'D':
-                    scoringGuide.uninvolved.count++;
-                    break;
-                default:
-                    break;
-            }
-        });
-    };
+  const handleAnswerSelect = (answer) => {
+    setSelectedOption(answer); // Mark the selected option
+    setAnswers([...answers, answer]);
+    if (currentQuestionIndex + 1 < quizQuestions.length) {
+      setTimeout(() => {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setSelectedOption(null); // Reset for next question
+      }, 300);
+    } else {
+      calculateResult([...answers, answer]);
+      setQuizCompleted(true);
+    }
+  };
 
-    const getResults = () => {
-        const styles = Object.entries(scoringGuide);
-        const maxStyle = styles.reduce((prev, curr) => (curr[1].count > prev[1].count ? curr : prev));
-        return maxStyle[1]; // Return the result with the highest count
-    };
+  const calculateResult = (answers) => {
+    const counts = answers.reduce((acc, answer) => {
+      acc[answer] = (acc[answer] || 0) + 1;
+      return acc;
+    }, {});
+    const mostFrequentAnswer = Object.keys(counts).reduce((a, b) =>
+      counts[a] > counts[b] ? a : b
+    );
+    const styles = { A: "Authoritative", B: "Authoritarian", C: "Permissive", D: "Uninvolved" };
+    setResultStyle(styles[mostFrequentAnswer]);
+  };
 
-    const results = quizCompleted ? getResults() : null;
+  const restartQuiz = () => {
+    setAnswers([]);
+    setCurrentQuestionIndex(0);
+    setQuizCompleted(false);
+    setResultStyle(null);
+    setSelectedOption(null);
+  };
 
-    const handleRedirect = () => {
-        router.push('/results'); // Redirect to results page
-    };
-  
-    return (
-      <div style={{ 
-          display: "flex", 
-          flexDirection: "column", 
-          alignItems: "center", 
-          justifyContent: "center", 
-          minHeight: "100vh", 
-          backgroundColor: "#f9f9f9", 
-          padding: '20px' 
-      }}>
-          <h1 style={{ 
-              fontSize: "40px", 
-              fontWeight: "900", 
-              margin: "10px 0", 
-              color: "#4CAF50",
-              textShadow: "2px 2px 6px rgba(0, 0, 0, 0.1)",
-              textTransform: "uppercase",
-              letterSpacing: "2px"
-          }}>
-              Parenting Style Quiz
-          </h1>
-          {quizCompleted ? (
-              <div style={{ 
-                  textAlign: "center", 
-                  padding: "20px", 
-                  border: "2px solid #4CAF50", 
-                  borderRadius: "12px", 
-                  backgroundColor: "#fff", 
-                  width: "90%", 
-                  maxWidth: "500px", 
-                  marginTop: '20px', 
-                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" 
-              }}>
-                  <h2 style={{ color: "#333", fontSize: "24px", marginBottom: "10px", fontWeight: 'bold' }}>Quiz Completed!</h2>
-                  <h3 style={{ color: "#555", marginBottom: "10px" }}>{results.description}</h3>
-                  <h4 style={{ color: "#4CAF50", marginBottom: "5px", fontWeight: 'bold' }}>Characteristics:</h4>
-                  <ul style={{ textAlign: "left", paddingLeft: "20px", color: "#555", listStyleType: "disc", fontSize: "16px" }}>
-                      {results.characteristics.map((char, index) => <li key={index}>{char}</li>)}
-                  </ul>
-                  <h4 style={{ color: "#4CAF50", marginBottom: "5px", fontWeight: 'bold' }}>Impact on Children:</h4>
-                  <ul style={{ textAlign: "left", paddingLeft: "20px", color: "#555", listStyleType: "disc", fontSize: "16px" }}>
-                      {results.impact.map((impact, index) => <li key={index}>{impact}</li>)}
-                  </ul>
-                  <h4 style={{ color: "#4CAF50", marginBottom: "5px", fontWeight: 'bold' }}>Guidance Tips:</h4>
-                  <ul style={{ textAlign: "left", paddingLeft: "20px", color: "#555", listStyleType: "disc", fontSize: "16px" }}>
-                      {results.tips.map((tip, index) => <li key={index}>{tip}</li>)}
-                  </ul>
-                  <button
-                      onClick={handleRedirect}
-                      style={{
-                          backgroundColor: '#4CAF50',
-                          color: '#fff',
-                          padding: '12px 20px',
-                          margin: '15px 0',
-                          border: 'none',
-                          borderRadius: '8px',
-                          fontSize: '16px',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          transition: 'background-color 0.3s, transform 0.2s',
-                          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
-                      }}
-                  >
-                      Your Results
-                  </button>
-              </div>
-          ) : (
-              <div style={{ 
-                  textAlign: "center", 
-                  padding: "20px", 
-                  border: "2px solid #4CAF50", 
-                  borderRadius: "12px", 
-                  backgroundColor: "#fff", 
-                  margin: "20px 0", 
-                  width: "90%", 
-                  maxWidth: "700px",
-                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
-              }}>
-                  <h2 style={{ 
-                      margin: "0", 
-                      fontSize: "20px", 
-                      color: "#333", 
-                      lineHeight: "1.5" 
-                  }}>
-                      {quizQuestions[currentQuestionIndex].question}
-                  </h2>
-              </div>
-          )}
-          {!quizCompleted && (
-              <div className="quiz-options" style={{ 
-                  display: "flex", 
-                  flexDirection: "column", 
-                  alignItems: "center", 
-                  width: "90%", 
-                  maxWidth: "600px" 
-              }}>
-                  {Object.values(quizQuestions[currentQuestionIndex].options).map((option, index) => (
-                      <button
-                          key={index}
-                          onClick={() => handleAnswerSelect(option)}
-                          style={{
-                              backgroundColor: selectedAnswer === option ? '#4CAF50' : '#ffffff',
-                              color: selectedAnswer === option ? '#fff' : '#333',
-                              padding: '12px 20px',
-                              margin: '10px 0',
-                              border: '2px solid #4CAF50',
-                              borderRadius: '8px',
-                              fontSize: '16px',
-                              cursor: 'pointer',
-                              fontWeight: selectedAnswer === option ? 'bold' : 'normal',
-                              transition: 'background-color 0.3s, transform 0.2s',
-                              boxShadow: selectedAnswer === option 
-                                  ? "0 4px 6px rgba(0, 0, 0, 0.1)" 
-                                  : "none",
-                              width: '100%',
-                              textAlign: 'left',
-                              boxSizing: 'border-box',
-                          }}
-                      >
-                          {option}
-                      </button>
-                  ))}
-              </div>
-          )}
-      </div>
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh", backgroundColor: "#f9f9f9", padding: "20px" }}>
+      <h1 style={{ fontSize: "40px", fontWeight: "900", margin: "10px 0", color: "#4CAF50", textShadow: "2px 2px 6px rgba(0, 0, 0, 0.1)", textTransform: "uppercase", letterSpacing: "2px" }}>
+        Parenting Style Quiz
+      </h1>
+      {quizCompleted ? (
+        <div style={{ textAlign: "center", padding: "20px", border: "2px solid #4CAF50", borderRadius: "12px", backgroundColor: "#fff", width: "90%", maxWidth: "500px", marginTop: "20px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+          <h2>Your Parenting Style: {resultStyle}</h2>
+          <p>{resultStyle && parentingStyles[resultStyle].description}</p>
+          <h4 style={{ color: "#4CAF50", marginBottom: "5px", fontWeight: "bold" }}>Characteristics:</h4>
+          <ul style={{ textAlign: "left", paddingLeft: "20px", color: "#555", listStyleType: "disc", fontSize: "16px" }}>
+            {parentingStyles[resultStyle].characteristics.map((char, index) => (
+              <li key={index}>{char}</li>
+            ))}
+          </ul>
+          <h4 style={{ color: "#4CAF50", marginBottom: "5px", fontWeight: "bold" }}>Impact on Children:</h4>
+          <ul style={{ textAlign: "left", paddingLeft: "20px", color: "#555", listStyleType: "disc", fontSize: "16px" }}>
+            {parentingStyles[resultStyle].impact.map((impact, index) => (
+              <li key={index}>{impact}</li>
+            ))}
+          </ul>
+          <h4 style={{ color: "#4CAF50", marginBottom: "5px", fontWeight: "bold" }}>Guidance Tips:</h4>
+          <ul style={{ textAlign: "left", paddingLeft: "20px", color: "#555", listStyleType: "disc", fontSize: "16px" }}>
+            {parentingStyles[resultStyle].tips.map((tip, index) => (
+              <li key={index}>{tip}</li>
+            ))}
+          </ul>
+          <button
+            onClick={restartQuiz}
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "#fff",
+              padding: "12px 20px",
+              margin: "15px 0",
+              border: "none",
+              borderRadius: "8px",
+              fontSize: "16px",
+              cursor: "pointer",
+              fontWeight: "bold",
+              transition: "background-color 0.3s, transform 0.2s",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            Restart Quiz
+          </button>
+        </div>
+      ) : (
+        <div style={{ textAlign: "center", padding: "20px", border: "2px solid #4CAF50", borderRadius: "12px", backgroundColor: "#fff", margin: "20px 0", width: "90%", maxWidth: "700px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+          <h2 style={{ margin: "0", fontSize: "22px", color: "#333", lineHeight: "1.5", fontWeight: "bold", fontFamily: "'Roboto', Arial, sans-serif", }}>
+            {quizQuestions[currentQuestionIndex].question}
+          </h2>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+          {Object.entries(quizQuestions[currentQuestionIndex].options).map(([optionKey, optionValue]) => (
+  <button
+    key={optionKey}
+    onClick={() => handleAnswerSelect(optionKey)}
+    style={{
+      backgroundColor: selectedOption === optionKey ? "#4CAF50" : "#fff", // Green when selected
+      color: selectedOption === optionKey ? "#fff" : "#333", // White text when selected
+      border: "2px solid #4CAF50", // Green border
+      padding: "12px 20px",
+      margin: "10px 0",
+      width: "80%",
+      fontSize: "16px",
+      //fontWeight: "bold",
+      borderRadius: "8px",
+      cursor: "pointer",
+      transition: "background-color 0.3s, color 0.3s",
+      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+      //textTransform: "uppercase",
+      fontFamily: "'Roboto', Arial, sans-serif",
+    }}
+  >
+    {optionValue}
+  </button>
+))}
+
+          </div>
+        </div>
+      )}
+    </div>
   );
-}  
+}
