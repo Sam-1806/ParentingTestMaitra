@@ -9,22 +9,22 @@ interface Data {
 
 const data: Data[] = [
     {
-        imgSrc: "/assets/slickCompany/airbnb.svg"
+        imgSrc: "/assets/slickCompany/b1.png"
     },
     {
-        imgSrc: "/assets/slickCompany/hubspot.svg"
+        imgSrc: "/assets/slickCompany/b2.png"
     },
     {
-        imgSrc: "/assets/slickCompany/microsoft.svg"
+        imgSrc: "/assets/slickCompany/b3.png"
     },
     {
-        imgSrc: "/assets/slickCompany/google.svg"
+        imgSrc: "/assets/slickCompany/b4.png"
     },
     {
-        imgSrc: "/assets/slickCompany/walmart.svg"
+        imgSrc: "/assets/slickCompany/b5.png"
     },
     {
-        imgSrc: "/assets/slickCompany/fedex.svg"
+        imgSrc: "/assets/slickCompany/b6.png"
     },
 ]
 

@@ -12,7 +12,6 @@ export default function Home() {
       <Companies />
       <Tabs />
       <Mentor />
-      <Students />
       <Newsletter />
     </main>
   )
