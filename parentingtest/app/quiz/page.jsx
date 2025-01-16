@@ -629,20 +629,25 @@ export default function ParentingStyleQuiz() {
       ) : (
         <div style={{ textAlign: "center", padding: "20px", border: "2px solid #4CAF50", borderRadius: "12px", backgroundColor: "#fff", margin: "20px 0", width: "90%", maxWidth: "700px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
           {/* Progress Bar */}
-          <div
-            style={{
-              height: "8px",
-              backgroundColor: "#ddd",
-              borderRadius: "4px",
-              overflow: "hidden",
-              margin: "20px 0",
-            }}
-          >
-            <div
-              style={{ textAlign: "center", padding: "20px", border: "2px solid #4CAF50", borderRadius: "12px", backgroundColor: "#fff", margin: "20px 0", width: "90%", maxWidth: "700px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
-            ></div>
-          </div>
-
+<div
+  style={{
+    height: "8px",
+    backgroundColor: "#ddd",
+    borderRadius: "4px",
+    overflow: "hidden",
+    margin: "20px 0",
+    width: "100%",
+  }}
+>
+  <div
+    style={{
+      height: "100%",
+      width: `${((currentQuestionIndex + 1) / quizQuestions.length) * 100}%`,
+      backgroundColor: "#4CAF50",
+      transition: "width 0.3s ease",
+    }}
+  ></div>
+</div>
           {/* Question */}
           <h2 style={{ margin: "0", fontSize: "22px", color: "#333", lineHeight: "1.5", fontWeight: "bold", fontFamily: "'Roboto', Arial, sans-serif",}}>{quizQuestions[currentQuestionIndex].question}</h2>
 
