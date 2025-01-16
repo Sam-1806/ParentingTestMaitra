@@ -69,7 +69,7 @@ const Banner = () => {
                                 <Dropdowntwo />
                             </div>
                             <div className="col-span-3 sm:col-span-2 mt-2">
-                                <a href="/quiz">
+                                <a href="/payments">
                                     <button className="bg-purple w-full hover:bg-purple-700 text-white font-bold py-4 px-3 rounded">
                                         Start
                                     </button>
