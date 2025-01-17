@@ -8,7 +8,7 @@ type Hourtype = {
 
 
 const Hour: Hourtype[] = [
-  { name: 'Test + 1 Counseling session with Mrs. Kalyani Bhabad' }
+  { name: 'Test + 1 Counseling session with Senior Psychologist Kalyani Bhabad' }
 ]
 
 const Dropdown = () => {
