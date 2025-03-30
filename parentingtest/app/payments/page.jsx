@@ -67,20 +67,32 @@ export default function PaymentPage() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "20px" }}>
-      <div
-        style={{
-          width: "90%",
-          maxWidth: "600px",
-          padding: "30px",
-          textAlign: "center",
-          border: "3px solid #212121",
-          borderRadius: "12px",
-          backgroundColor: "#ffffff",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          marginTop: "150px",
-        }}
-      >
+    <div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center", // Ensures vertical centering
+    height: "100vh", // Ensures it takes the full screen
+    width: "100%", // Ensures proper width
+    overflow: "auto", // Prevents hidden form
+    padding: "20px", // Ensures spacing
+  }}
+>
+  <div
+    style={{
+      width: "90%",
+      maxWidth: "600px",
+      padding: "30px",
+      textAlign: "center",
+      border: "3px solid #212121",
+      borderRadius: "12px",
+      backgroundColor: "#ffffff",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      position: "relative", // Ensures no overlap
+      zIndex: 10, // Ensures visibility
+    }}
+  >
         <h1
           style={{
             color: "#333",
