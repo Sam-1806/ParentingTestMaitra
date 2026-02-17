@@ -221,7 +221,7 @@ export default function ParentingStyleQuiz() {
       }
     },
     {
-        question: "25. How do you handle situations when your child struggles with peer pressure??",
+        question: "25. How do you handle situations when your child struggles with peer pressure?",
         options: {
           A: "I talk to them openly about how to handle it and build confidence",
           B: "I forbid them from interacting with peers who have a negative influence.",
@@ -230,129 +230,138 @@ export default function ParentingStyleQuiz() {
         }
     },
     {
-      question: "26. How do you ensure your child follows through on commitments?",
+      question: "26. How do you respond when your child challenges your opinion respectfully?",
       options: {
-        A: "I remind them and provide support to help manage their commitments.",
-        B: "I insist they complete their tasks, even if they resist.",
-        C: "I let them handle it independently, stepping in only if needed.",
-        D: " I do not monitor their commitments closely."
+        A: "I listen and consider their perspective before responding.",
+        B: "I remind them that I am the parent and my decision stands.",
+        C: "I usually give in to avoid arguments.",
+        D: "I don’t engage much in such discussions."
       }
     },
     {
-      question: "27. What is your attitude toward extracurricular activities for your child?",
+      question: "27.How do you manage bedtime routines?",
       options: {
-        A: "I encourage participation but let them choose what they enjoy.",
-        B: "I decide which activities are best for their development.",
-        C: "I don’t emphasize activities unless they show interest.",
-        D: "I leave it entirely up to them and don’t get involved."
+        A: "I set consistent routines but allow flexibility when needed. ",
+        B: "Bedtime is fixed and must be followed strictly.",
+        C: "I let my child decide when to sleep.",
+        D: "I don’t monitor bedtime regularly.",
       }
     },
     {
-      question: "28. How do you address inappropriate language or behavior in your child?",
+      question: "28. How do you react if your child lies to you?",
       options: {
-        A: "I talk to them about why the behavior is inappropriate and how to correct it.",
-        B: "I impose consequences immediately to discourage such behavior.",
-        C: "I try to ignore it, believing it’s a phase that will pass.",
-        D: "I don’t usually intervene unless it becomes a bigger problem."
+        A: "I discuss why honesty matters and explore the reason behind the lie.",
+        B: "I punish them immediately for dishonesty.",
+        C: "I overlook it if it’s a small lie.",
+        D: "I ignore it unless it becomes frequent."
       }
     },
     {
-      question: "29. If your child needs help with schoolwork, what do you do?",
+      question: "29. How do you prepare your child to handle failure?",
       options: {
-        A: "I provide guidance and encourage them to think critically.",
-        B: "I take over and ensure it’s done correctly.",
-        C: "I suggest they do it at their own pace and help only if asked.",
-        D: "I rarely get involved in schoolwork matters."
+        A: "I teach resilience and encourage reflection and growth.",
+        B: "I push them harder to avoid failure next time.",
+        C: "I comfort them and avoid discussing the failure deeply.",
+        D: "I assume they will learn on their own."
       }
     },
     {
-      question: "30. How do you approach discussions on sensitive topics (e.g., relationships, peer pressure)?",
+      question: "30. How do you handle sibling conflicts?",
       options: {
-        A: "I address them openly and provide information in an age-appropriate manner.",
-        B: "I avoid discussing such topics until necessary.",
-        C: "I let them lead the conversation and offer support when needed.",
-        D: "I leave it to others (e.g., teachers, peers) to handle these discussions."
+        A: "I mediate and help them resolve the issue constructively.",
+        B: "I decide who is wrong and assign consequences.",
+        C: "I let them sort it out themselves.",
+        D: "I stay out of it unless it escalates."
       }
     },
     {
-      question: "31. How do you handle situations where your child disappoints you?",
+      question: "31. ⁠How do you respond when your child wants something expensive?",
       options: {
-        A: "I express my feelings calmly and explore what went wrong together.",
-        B: "I communicate my disappointment and set higher expectations.",
-        C: "I tend to let it go and avoid making a big deal out of it.",
+        A: "I explain financial limits and discuss budgeting.",
+        B: "I refuse firmly without much explanation.",
+        C: "I try to fulfill their request if possible.",
+        D: "I avoid the discussion."
+      }
+    },
+    {
+      question: "32. How do you encourage responsibility at home?",
+      options: {
+        A: "I assign age-appropriate chores and guide them.",
+        B: "I expect tasks to be completed without reminders.",
+        C: "I don’t insist much on chores.",
+        D: "I rarely assign responsibilities."
+      }
+    },
+    {
+      question: "33. How do you react to your child’s differing beliefs or opinions?",
+      options: {
+        A: "I respect their views and encourage thoughtful dialogue.",
+        B: "I insist they follow the family’s beliefs.",
+        C: "I don’t mind what they believe.",
+        D: "I don’t engage in such conversations."
+      }
+    },
+    {
+      question: "34. ⁠How do you handle your own stress in front of your child?",
+      options: {
+        A: "I model healthy coping strategies.",
+        B: "I expect them not to disturb me during stress.",
+        C: "I may vent openly without filtering much.",
+        D: "I withdraw and avoid interaction."
+      }
+    },
+    {
+      question: "35. ⁠How do you approach teaching gratitude?",
+      options: {
+        A: "I model gratitude and discuss its importance.",
+        B: "I demand appreciation and respect.",
+        C: "I don’t emphasize it much.",
         D: "I don’t react much unless it’s a serious issue."
       }
     },
     {
-      question: "32. What do you believe is the most effective way to teach your child right from wrong?",
+      question: "36.  ⁠How do you respond when your child breaks a household item accidentally?",
       options: {
-        A: "Through open discussions and modeling the behavior myself.",
-        B: "By setting clear rules and consequences",
-        C: "Allowing them to learn through their own experiences.",
-        D: "Letting them figure it out as they grow up."
+        A: "I stay calm and teach carefulness.",
+        B: "I scold them firmly to prevent carelessness.",
+        C: "I reassure them and fix it myself.",
+        D: "I ignore it unless it’s costly."
       }
     },
     {
-      question: "33. How involved are you in monitoring your child’s online activities?",
+      question: "37. How do you encourage independence?",
       options: {
-        A: "I monitor actively but also educate them on safe and responsible use.",
-        B: "I set strict rules and check their activities frequently.",
-        C: "I let them manage their own use unless a problem arises.",
-        D: "I am not very involved in their online activities."
+        A: "I gradually increase responsibilities with support.",
+        B: "I expect independence without much guidance.",
+        C: "I prefer to do things for them.",
+        D: "I let them manage entirely on their own."
       }
     },
     {
-      question: "34. How do you support your child’s interests and hobbies?",
+      question: "38. How do you respond when your child compares you to other parents?",
       options: {
-        A: "I encourage and provide resources to help them pursue their passions.",
-        B: "I prioritize hobbies that align with productive or educational goals.",
-        C: "I let them choose and follow their interests without much input.",
-        D: "I rarely engage with their hobbies."
+        A: "I listen and discuss their feelings openly.",
+        B: "I remind them that every family has different rules.",
+        C: "I feel guilty and try to change immediately.",
+        D: "I dismiss the comparison."
       }
     },
     {
-      question: "35. If your child needs to make an important decision, what role do you play?",
+      question: "39. ⁠How do you celebrate your child’s achievements?",
       options: {
-        A: "I guide them by discussing options and outcomes.",
-        B: "I make the decision for them, as I know what’s best.",
-        C: "I let them make their own decision without interference.",
-        D: "I am not actively involved unless they specifically ask for my help."
+        A: "I celebrate effort and growth, not just results.",
+        B: "I celebrate only major achievements.",
+        C: "I celebrate everything to keep them happy.",
+        D: "I don’t make a big deal out of achievements."
       }
     },
     {
-      question: "36. What is your approach to balancing fun and discipline in parenting?",
+      question: "40. How do you prepare your child for real-world responsibilities?",
       options: {
-        A: "I believe in a balanced approach, with clear rules but also flexibility for fun.",
-        B: "I prioritize discipline over fun to build strong character.",
-        C: "I focus more on letting them enjoy themselves without too many rules.",
-        D: "I do not put much thought into balancing these aspects."
-      }
-    },
-    {
-      question: "37. How do you handle your child’s mistakes when it impacts others (e.g., bullying, cheating)?",
-      options: {
-        A: "I address the issue directly, helping them understand the impact of their actions.",
-        B: "I impose strict consequences to prevent it from happening again.",
-        C: "I try to minimize the issue and move on quickly.",
-        D: "I avoid dealing with it unless it becomes severe."
-      }
-    },
-    {
-      question: "38. What values do you prioritize most in your child’s upbringing?",
-      options: {
-        A: "Honesty, empathy, and responsibility.",
-        B: "Discipline, respect, and achievement.",
-        C: "Freedom, happiness, and creativity.",
-        D: "Independence, self-reliance, and minimal interference."
-      }
-    },
-    {
-      question: "39. How do you handle situations when your child struggles with peer pressure?",
-      options: {
-        A: "I talk to them openly about how to handle it and build confidence.",
-        B: "I forbid them from interacting with peers who have a negative influence.",
-        C: "I let them deal with it unless it becomes a significant problem.",
-        D: "I’m not very involved in their peer relationships."
+        A: "I teach life skills gradually and involve them in real tasks.",
+        B: "I focus mainly on discipline and obedience.",
+        C: "I believe childhood should be stress-free.",
+        D: "I assume they will learn naturally with time."
       }
     }
 

@@ -17,63 +17,63 @@ const names: Name[] = [
         course: 'Parenting Style Test',
         imageSrc: '/assets/courses/coursesOne.svg',
         profession: 'Parenting Style, Behaviour Analysis',
-        price: '750',
+        price: '20 mins',
         category: 'Parenting'
     },
     {
         course: 'Apptitude Test',
         imageSrc: '/assets/courses/coursesTwo.svg',
         profession: 'Comprehensive Apptitude test, Career Choice',
-        price: '21',
+        price: '2 hours',
         category: 'Apptitude testing'
     },
     {
         course: 'Behavior Analysis Test',
         imageSrc: '/assets/courses/coursesThree.svg',
         profession: 'IQ, EQ, Personality testing',
-        price: '21',
+        price: '2 hours',
         category: 'Apptitude testing'
     },
     {
         course: 'External Behaviour Analysis',
         imageSrc: '/assets/courses/coursesFour.svg',
         profession: 'Behavioural testing, Family Counseling',
-        price: '99',
+        price: '2 hours',
         category: 'Family Counseling'
     },
     {
         course: 'IQ testing',
         imageSrc: '/assets/courses/coursesOne.svg',
         profession: 'IQ Testing, Analysis',
-        price: '89',
+        price: '2 hours',
         category: 'Apptitude testing'
     },
     {
         course: 'Career Apptitude',
         imageSrc: '/assets/courses/coursesThree.svg',
         profession: 'Apptitude and Career guidance based on that',
-        price: '89',
+        price: '3 hours',
         category: 'Career Guidance'
     },
     {
         course: 'Personality Test',
         imageSrc: '/assets/courses/coursesOne.svg',
         profession: 'Type of personality testing',
-        price: '69',
+        price: '90 mins',
         category: 'Family Counseling'
     },
     {
         course: 'Child and Parenting Style',
         imageSrc: '/assets/courses/coursesTwo.svg',
         profession: 'Parenting Style, Child and Family Counseling',
-        price: '69',
+        price: '20 mins',
         category: 'Parenting'
     },
     {
         course: 'Stress Testing',
         imageSrc: '/assets/courses/coursesTwo.svg',
         profession: 'Family Counseling and stress testing',
-        price: '99',
+        price: '2 hours',
         category: 'Family Counseling'
     }
 ];
@@ -116,7 +116,7 @@ const NamesList = () => {
                         {name.course}
                     </div>
                     <div className="mt-6 block text-lg font-semibold text-green border-solid border-2 border-green rounded-md px-1">
-                        ${name.price}
+                        {name.price}
                     </div>
                 </div>
                 <p aria-hidden="true" className="mt-2 mb-5 text-2xl font-semibold ">
@@ -124,7 +124,7 @@ const NamesList = () => {
                 </p>
 
                 <div className='flex justify-between border-solid border-2 border-grey500 rounded-md p-2'>
-                    <p>12 Classes</p>
+                    <p>Includes 1 counseling session after test</p>
                     <div className='flex flex-row space-x-4'>
                         <div className='flex'>
                             <img src={'/assets/courses/account.svg'} alt="circle" />
