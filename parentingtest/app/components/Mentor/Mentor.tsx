@@ -15,10 +15,10 @@ const products: Product[] = [
         id: 1,
         name: 'Senior Psychologist',
         href: '#',
-        imageSrc: '/assets/mentor/boy1.svg',
+        imageSrc: '/assets/mentor/main-ph.jpeg',
         imageAlt: "Front of men's Basic Tee in black.",
         color: 'Kalyani Bhabad',
-        description: 'Kalyani Bhabad is a senior psychologist with 10+ years of experience in counseling, psychology, Consultancy and Therapy. <br />M.A. (Psychology), Director B.H.Sc (Child Psychology), PG in Child & Family Counseling, Dip in Remedial Teaching, Dip. in Flower Medicines.'
+        description: 'Kalyani Bhabad is a senior psychologist & educationist with 18+ years of experience in counseling, psychology, Consultancy and Therapy. <br />M.A. (Psychology), B.H.Sc (Child Psychology), Post Graduation in Child & Family Counseling, Diploma in Remedial Teaching, Flower Medicines'
     },
    
 ]
@@ -31,20 +31,20 @@ const Mentor = () => {
         >
             <div className="text-center mb-12">
                 <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 my-4">
-                    Meet our Mentor
+                    Meet the Mentor
                 </h2>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Left Section: Image with Caption */}
                 <div className="flex flex-col items-center">
-                    <div className="overflow-hidden rounded-lg shadow-lg">
+                    <div className="overflow-hidden rounded-lg shadow-lg w-full max-w-md">
                         <img
                             src={products[0].imageSrc}
                             alt={products[0].imageAlt}
-                            className="object-cover w-full h-auto"
+                            className="object-cover w-full h-70 sm:h-96"
                         />
                     </div>
-                    <div className="mt-4 bg-white p-4 text-center rounded-lg shadow">
+                    <div className="mt-4 bg-white p-4 text-center rounded-lg shadow w-full max-w-md">
                         <h3 className="text-xl font-bold text-gray-800">{products[0].name}</h3>
                         <p className="text-lg text-gray-600">{products[0].color}</p>
                     </div>
